@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Chatbot</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #chatbox {
+            width: 350px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .user {
+            text-align: right;
+            color: blue;
+        }
+
+        .bot {
+            text-align: left;
+            color: green;
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chatbox">
+    <h3>College Chatbot</h3>
+    <div id="messages"></div>
+
+    <input type="text" id="userInput" placeholder="Ask something...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("userInput").value;
+    let messages = document.getElementById("messages");
+
+    if (input === "") return;
+
+    messages.innerHTML += "<div class='user'>" + input + "</div>";
+
+    let response = getBotResponse(input);
+
+    setTimeout(() => {
+        messages.innerHTML += "<div class='bot'>" + response + "</div>";
+        messages.scrollTop = messages.scrollHeight;
+    }, 500);
+
+    document.getElementById("userInput").value = "";
+}
+
+function getBotResponse(input) {
+    input = input.toLowerCase();
+
+    if (input.includes("hello")) {
+        return "Hello! How can I help you?";
+    }
+    else if (input.includes("admission")) {
+        return "Admissions are open. Please visit college office.";
+    }
+    else if (input.includes("courses")) {
+        return "We offer BCS, BCA, BBA and more.";
+    }
+    else if (input.includes("fees")) {
+        return "Please contact admin for fee details.";
+    }
+    else {
+        return "Sorry, I didn't understand.";
+    }
+}
+</script>
+
+</body>
+</html>
