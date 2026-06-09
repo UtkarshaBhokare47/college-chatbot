@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "No installation needed"
+
+  build:
+    commands:
+      - echo "Build phase started"
+      - echo "Nothing to build for static website"
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
