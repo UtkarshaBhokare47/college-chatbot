@@ -1,99 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>College Chatbot</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
 
-        #chatbox {
-            width: 350px;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        #messages {
-            height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
+body {
+    background: #0f172a;
+    color: white;
+}
 
-        .user {
-            text-align: right;
-            color: blue;
-        }
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: #020617;
+    position: sticky;
+    top: 0;
+}
 
-        .bot {
-            text-align: left;
-            color: green;
-        }
+nav h2 {
+    color: #38bdf8;
+}
 
-        input {
-            width: 70%;
-            padding: 8px;
-        }
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
 
-        button {
-            padding: 8px;
-        }
-    </style>
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+.hero span {
+    color: #38bdf8;
+}
+
+.hero button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #38bdf8;
+    border: none;
+    cursor: pointer;
+}
+
+/* Sections */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 250px;
+}
+
+/* Contact */
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+}
+
+button {
+    background: #38bdf8;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #020617;
+}
+</style>
 </head>
+
 <body>
 
-<div id="chatbox">
-    <h3>College Chatbot</h3>
-    <div id="messages"></div>
+<!-- Navbar -->
+<nav>
+    <h2>MyPortfolio</h2>
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-    <input type="text" id="userInput" placeholder="Ask something...">
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Hello, I'm <span>Your Name</span></h1>
+    <p>Aspiring Developer | AWS & DevOps Learner</p>
+    <button onclick="scrollToSection('contact')">Hire Me</button>
+</div>
+
+<!-- About -->
+<div id="about" class="section">
+    <h2>About Me</h2>
+    <p>I am a passionate developer learning AWS, DevOps, and building projects.</p>
+</div>
+
+<!-- Projects -->
+<div id="projects" class="section">
+    <h2>My Projects</h2>
+
+    <div class="card">
+        <h3>Chatbot</h3>
+        <p>College chatbot using Streamlit</p>
+    </div>
+
+    <div class="card">
+        <h3>AWS Pipeline</h3>
+        <p>CI/CD using CodePipeline & CodeBuild</p>
+    </div>
+
+    <div class="card">
+        <h3>Portfolio</h3>
+        <p>Static website hosted on S3</p>
+    </div>
+</div>
+
+<!-- Contact -->
+<div id="contact" class="section">
+    <h2>Contact Me</h2>
+
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea placeholder="Your Message"></textarea><br>
+
     <button onclick="sendMessage()">Send</button>
 </div>
 
+<!-- Footer -->
+<footer>
+    <p>© 2026 Your Name | Built with ❤️</p>
+</footer>
+
 <script>
-function sendMessage() {
-    let input = document.getElementById("userInput").value;
-    let messages = document.getElementById("messages");
-
-    if (input === "") return;
-
-    messages.innerHTML += "<div class='user'>" + input + "</div>";
-
-    let response = getBotResponse(input);
-
-    setTimeout(() => {
-        messages.innerHTML += "<div class='bot'>" + response + "</div>";
-        messages.scrollTop = messages.scrollHeight;
-    }, 500);
-
-    document.getElementById("userInput").value = "";
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
 
-function getBotResponse(input) {
-    input = input.toLowerCase();
-
-    if (input.includes("hello")) {
-        return "Hello! How can I help you?";
-    }
-    else if (input.includes("admission")) {
-        return "Admissions are open. Please visit college office.";
-    }
-    else if (input.includes("courses")) {
-        return "We offer BCS, BCA, BBA and more.";
-    }
-    else if (input.includes("fees")) {
-        return "Please contact admin for fee details.";
-    }
-    else {
-        return "Sorry, I didn't understand.";
-    }
+function sendMessage() {
+    alert("Message sent! (Demo only)");
 }
 </script>
 
